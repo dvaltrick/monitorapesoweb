@@ -1,0 +1,12 @@
+.panel{
+  background-color: white;
+  margin-top: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
+
+  padding: 40px;
+
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  box-shadow: 2px 2px lightgray;
+}

@@ -1,0 +1,70 @@
+.panel{
+  padding-top: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.welcome{
+  color: white;
+} 
+
+.panel h3{
+  color: #253031;
+}
+
+.content{
+  margin-top: 15px;
+  background-color: white;
+  padding: 20px;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+.content .btn-primary{
+  margin-top:32px;
+}
+
+.content .data{
+  padding-top:10px;
+}
+
+.content h4{
+  color: #315659;
+  width: 100%;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #315659;
+}
+
+.content h6{
+  color: #253031;
+}
+
+.list .list-group-item{
+  padding: 5px;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  margin-bottom: 1px;
+  border-bottom: 1px solid lightgray;
+}
+
+.summary{
+  height: 100%;
+  border-right: 1px solid lightgray;
+}
+
+.graph{
+  height: 100%;
+  width: 100%;
+  border-left: 1px solid lightgray;
+}
+
+.list .list-group-item p{
+  padding: 0px;
+  margin: 2px;
+}
+
+.list .list-group-item p{
+  padding: 0px;
+  margin: 2px;
+}

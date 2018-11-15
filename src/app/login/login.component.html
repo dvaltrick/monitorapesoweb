@@ -1,0 +1,23 @@
+<div class="panel">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+      </div>
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-4">
+        <form>
+          <div class="form-group">
+            <label for="inputUser">Usuário</label>
+            <input type="text" [(ngModel)]="toLoginUser.userName" class="form-control" id="inputUser" name="inputUser" aria-describedby="userHelp" placeholder="Informe seu nome de usuário">
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Senha</label>
+            <input type="password" [(ngModel)]="toLoginUser.password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Senha">
+          </div>
+          <button type="button" (click)="login();" class="btn btn-primary">Entrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

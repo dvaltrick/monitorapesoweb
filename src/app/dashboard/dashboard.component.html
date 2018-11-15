@@ -1,0 +1,118 @@
+<nav class="navbar navbar-dark" style="background-color:#2978A0;">
+  <span class="navbar-brand mb-0 h1">
+    <img src="../assets/resources/icons8-fita-métrica-46.png"/>
+       Monitoramento de peso
+  </span>
+  <span class="mb-12 welcome">Bem vindo, @{{user.userName}}</span>
+</nav>
+
+<div class="panel">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="content">
+        <h4>RESUMO</h4>
+        <div class="data">
+          <div class="row">
+            <div class="col-sm-6"><h6>ÚLTIMO PESO:</h6></div>
+            <div class="col-sm-6"><h6>{{lastPost.weight}} Kg</h6></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6"><h6>IMC:</h6></div>
+            <div class="col-sm-3"><h6>{{imc | number:'2.1-2'}}</h6></div>
+            <div class="col-sm-3">
+              <span class="badge badge-danger" *ngIf="imc < 17">muito abaixo</span>
+              <span class="badge badge-warning" *ngIf="imc >= 17 && imc < 18.5">abaixo</span>
+              <span class="badge badge-success" *ngIf="imc >= 18.5 && imc < 25">normal</span>
+              <span class="badge badge-warning" *ngIf="imc >= 25 && imc < 30">sobrepeso</span>
+              <span class="badge badge-danger" *ngIf="imc > 30">obesidade</span>
+            </div>
+          </div>
+        </div>       
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="content">
+        <h4>LANÇAMENTO</h4>
+        <div class="data">
+          <form>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="eddata">Data</label>
+                  <div class="input-group">
+                    <input class="form-control" 
+                           name="eddata" 
+                           id="eddata"
+                           [(ngModel)]="dateToShow" 
+                           ngbDatepicker #d="ngbDatepicker">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-info" (click)="d.toggle()" type="button">
+                        <i class="far fa-calendar-alt"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="edpeso">Peso</label>
+                  <input type="number" class="form-control" id="edpeso" name="edpeso" [(ngModel)]="newPost.weight"/>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-group">
+                  <button type="button" 
+                          id="btsave" 
+                          name="btsave" 
+                          (click)="save();"
+                          class="btn btn-primary">
+                          Salvar  
+                          <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+    </div>
+  </div>
+  <div class="row">
+    <br>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="content">
+        <h4>MARCAÇÕES</h4>
+        <div class="data">
+          <div class="list" *ngIf="posts.length > 0;">
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let post of posts;">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <h6>{{post.date | date:"dd/MM/yyyy"}}</h6>
+                  </div>
+                  <div class="col-sm-4">
+                    <p>{{post.weight}} Kg</p>
+                  </div>
+                  <div class="col-sm-4">
+                    <p>var</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="content">
+          <h4>PROGRESSO</h4>
+          <div class="data">
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
