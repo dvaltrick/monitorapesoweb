@@ -24,6 +24,11 @@
   margin-top:32px;
 }
 
+.btn-link{
+  padding: 0px;
+  margin-top: 0px;
+}
+
 .content .data{
   padding-top:10px;
 }

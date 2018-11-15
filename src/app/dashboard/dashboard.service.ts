@@ -17,8 +17,26 @@ export class DashboardService {
 
   constructor(private httpClient:HttpClient) { }
 
-  public save(data:Post):Observable<Post>{
-    return this.httpClient.post<Post>(this.BASE_URL,data,httpOptions);
+  public save(data:Post, token:string):Observable<Post>{
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    }
+
+    return this.httpClient.post<Post>(this.BASE_URL,data,options);
+  }
+
+  public delete(data:Post, token:string):Observable<Post>{
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    }
+
+    return this.httpClient.delete<Post>(this.BASE_URL+data.id,options);
   }
 
   public getAllByUser(id:string, token:string):Observable<Post[]>{

@@ -97,9 +97,16 @@
                   <div class="col-sm-4">
                     <p>{{post.weight}} Kg</p>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-2">
                     <p>var</p>
                   </div>
+                  <div class="col-sm-1">
+                    <button type="button" 
+                            class="btn btn-link btn-sm"
+                            (click)="delete(post);">
+                      <i class="far fa-trash-alt"></i>
+                    </button>
+                  </div>  
                 </div>
               </li>
             </ul>

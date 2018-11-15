@@ -22,6 +22,10 @@ export class DashboardComponent implements OnInit {
     let authuser = this.storage.getItem("authuser");
     this.user = JSON.parse(authuser);
 
+    this.load();
+  }
+
+  public load(){
     var nowDate = new Date();
     this.dateToShow = {year: nowDate.getFullYear(), 
                        month: nowDate.getMonth() + 1, 
@@ -46,7 +50,28 @@ export class DashboardComponent implements OnInit {
                                  this.dateToShow.month, 
                                  this.dateToShow.day, 
                                  0, 0, 0, 0);
-    console.log(this.newPost)
+    this.service.save(this.newPost, this.user.token).subscribe(
+      data => {
+        this.load();
+        this.newPost = new Post();
+      },
+      error => {
+        alert('bugs');
+        console.log(error);
+      }
+    );
+  }
+
+  public delete(toDelete:Post){
+    this.service.delete(toDelete, this.user.token).subscribe(
+      data => {
+        this.load();
+      },
+      error => {
+        alert('bugs');
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit() {
