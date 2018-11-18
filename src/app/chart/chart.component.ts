@@ -2,6 +2,7 @@ import { ChartService } from './chart.service';
 import { User } from './../models/user';
 import { Post } from './../models/post';
 import { Component, OnInit, Input, SimpleChange } from '@angular/core';
+import { stringify } from '@angular/core/src/render3/util';
 
 @Component({
   selector: 'app-chart',
@@ -55,7 +56,8 @@ export class ChartComponent implements OnInit {
     var target: Array<any> = [];
 
     returnedPosts.forEach(ps => {
-      labels.push(ps.date);
+      var dateFormat:string = ps.date.toString();
+      labels.push(dateFormat.substring(8,10) + "/" + dateFormat.substring(5,7) + "/" + dateFormat.substring(0,4));
       data.push(ps.weight);
       target.push(this.user.target);
     });
@@ -70,6 +72,7 @@ export class ChartComponent implements OnInit {
     for (let i = labels.length - 1; i >= 0; i--) {
       this.lineChartLabels.push(labels[i]);
     }
+
   }
 
   public lineChartOptions:any = {
