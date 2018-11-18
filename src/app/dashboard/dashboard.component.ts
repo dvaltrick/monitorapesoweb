@@ -27,8 +27,8 @@ export class DashboardComponent implements OnInit {
 
   public load(){
     var nowDate = new Date();
-    this.dateToShow = {year: nowDate.getFullYear(), 
-                       month: nowDate.getMonth() + 1, 
+    this.dateToShow = {year: nowDate.getFullYear(),
+                       month: nowDate.getMonth() + 1,
                        day: nowDate.getDate()};
 
     this.service.getAllByUser(this.user.id, this.user.token).subscribe(
@@ -46,9 +46,9 @@ export class DashboardComponent implements OnInit {
 
   public save(){
     this.newPost.user = this.user;
-    this.newPost.date = new Date(this.dateToShow.year, 
-                                 this.dateToShow.month, 
-                                 this.dateToShow.day, 
+    this.newPost.date = new Date(this.dateToShow.year,
+                                 this.dateToShow.month-1,
+                                 this.dateToShow.day,
                                  0, 0, 0, 0);
     this.service.save(this.newPost, this.user.token).subscribe(
       data => {

@@ -31,6 +31,17 @@ export class ChartService {
     return this.httpClient.get<Post[]>(this.BASE_URL+'bymonth/'+id,options);
   }
 
+  public getByYear(id:string, token:string):Observable<Post[]>{
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    }
+
+    return this.httpClient.get<Post[]>(this.BASE_URL+'byyear/'+id,options);
+  }
+
   public getByThirtyDays(id:string, token:string):Observable<Post[]>{
     const options = {
       headers: new HttpHeaders({

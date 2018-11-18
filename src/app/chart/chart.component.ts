@@ -43,6 +43,39 @@ export class ChartComponent implements OnInit {
     );
   }
 
+  private byWeek(){
+    this.service.getByWeek(this.user.id, this.user.token).subscribe(
+      data => {
+        this.loadData(data);
+      },
+      error => {
+        alert('bugs');
+      }
+    );
+  }
+
+  private byMonth(){
+    this.service.getByMonth(this.user.id, this.user.token).subscribe(
+      data => {
+        this.loadData(data);
+      },
+      error => {
+        alert('bugs');
+      }
+    );
+  }
+
+  private byYear(){
+    this.service.getByYear(this.user.id, this.user.token).subscribe(
+      data => {
+        this.loadData(data);
+      },
+      error => {
+        alert('bugs');
+      }
+    );
+  }
+
   ngOnChanges(changes: SimpleChange){
     if(changes['posts']){
       console.log('COMP');
@@ -55,24 +88,19 @@ export class ChartComponent implements OnInit {
     var data: Array<any> = [];
     var target: Array<any> = [];
 
+    this.lineChartLabels.length = 0;
     returnedPosts.forEach(ps => {
       var dateFormat:string = ps.date.toString();
       labels.push(dateFormat.substring(8,10) + "/" + dateFormat.substring(5,7) + "/" + dateFormat.substring(0,4));
       data.push(ps.weight);
       target.push(this.user.target);
+      this.lineChartLabels.push(dateFormat.substring(8,10) + "/" + dateFormat.substring(5,7) + "/" + dateFormat.substring(0,4));
     });
 
     this.lineChartData = [
       {data: target, label: 'Meta'},
       {data: data, label: 'Peso'}
     ];
-
-
-    this.lineChartLabels.length = 0;
-    for (let i = labels.length - 1; i >= 0; i--) {
-      this.lineChartLabels.push(labels[i]);
-    }
-
   }
 
   public lineChartOptions:any = {
