@@ -11,13 +11,17 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardService } from './dashboard/dashboard.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ChartComponent } from './chart/chart.component';
+import { ChartsModule } from 'ng2-charts';
+import { ChartService } from './chart/chart.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -25,9 +29,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    ChartsModule
   ],
-  providers: [LoginService, HttpClient, DashboardService],
+  providers: [LoginService, HttpClient, DashboardService, ChartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -27,7 +27,7 @@
               <span class="badge badge-danger" *ngIf="imc > 30">obesidade</span>
             </div>
           </div>
-        </div>       
+        </div>
       </div>
     </div>
     <div class="col-sm-6">
@@ -40,10 +40,10 @@
                 <div class="form-group">
                   <label for="eddata">Data</label>
                   <div class="input-group">
-                    <input class="form-control" 
-                           name="eddata" 
+                    <input class="form-control"
+                           name="eddata"
                            id="eddata"
-                           [(ngModel)]="dateToShow" 
+                           [(ngModel)]="dateToShow"
                            ngbDatepicker #d="ngbDatepicker">
                     <div class="input-group-append">
                       <button class="btn btn-outline-info" (click)="d.toggle()" type="button">
@@ -61,12 +61,12 @@
               </div>
               <div class="col-sm-2">
                 <div class="form-group">
-                  <button type="button" 
-                          id="btsave" 
-                          name="btsave" 
+                  <button type="button"
+                          id="btsave"
+                          name="btsave"
                           (click)="save();"
                           class="btn btn-primary">
-                          Salvar  
+                          Salvar
                           <i class="fas fa-check"></i>
                   </button>
                 </div>
@@ -101,12 +101,12 @@
                     <p>var</p>
                   </div>
                   <div class="col-sm-1">
-                    <button type="button" 
+                    <button type="button"
                             class="btn btn-link btn-sm"
                             (click)="delete(post);">
                       <i class="far fa-trash-alt"></i>
                     </button>
-                  </div>  
+                  </div>
                 </div>
               </li>
             </ul>
@@ -114,10 +114,11 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-7">
         <div class="content">
           <h4>PROGRESSO</h4>
           <div class="data">
+            <app-chart [posts]="posts"></app-chart>
           </div>
         </div>
     </div>
