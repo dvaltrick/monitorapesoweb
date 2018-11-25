@@ -2,6 +2,7 @@ import { LoginService } from './login.service';
 import { User } from './../models/user';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   storage = window.localStorage;
 
   constructor(private service:LoginService,
-              private router: Router) { }
+              private router: Router,
+              public snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -23,14 +25,22 @@ export class LoginComponent implements OnInit {
   public login(){
     this.service.login(this.toLoginUser).subscribe(
       data => {
-        this.authUser = data;
-        localStorage.setItem("authuser", JSON.stringify(this.authUser));
+        if(data != null && data.token !== undefined && data.token != null){
+          this.authUser = data;
+          localStorage.setItem("authuser", JSON.stringify(this.authUser));
 
-        this.router.navigate(['dashboard']);
+          this.router.navigate(['dashboard']);
+        }else{
+          this.snackBar.open("Usuário ou senha inválidos, tente novamente", "Oooops!!!", {
+            duration: 20000
+          });
+        }
+
       },
       error => {
-        console.log(error);
-        alert('bugs');
+        this.snackBar.open("Usuário ou senha inválidos, tente novamente", "Oooops!!!", {
+          duration: 20000
+        });
       }
     );
   }
