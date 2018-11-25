@@ -14,6 +14,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ChartComponent } from './chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { ChartService } from './chart/chart.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -30,9 +32,12 @@ import { ChartService } from './chart/chart.service';
     FormsModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [LoginService, HttpClient, DashboardService, ChartService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[MatSnackBarModule]
 })
 export class AppModule { }
