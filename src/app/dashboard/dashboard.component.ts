@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
     this.service.getAllByUser(this.user.id, this.user.token).subscribe(
       data => {
         this.posts = data;
-        this.lastPost = this.posts[this.posts.length-1];
+        this.lastPost = this.posts[0];
         this.imc = this.lastPost.weight / (this.user.height * this.user.height);
 
       },
